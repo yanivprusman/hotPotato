@@ -1,0 +1,7 @@
+{
+  "description": "Hot-potato flash-sale companion: floating WhatsApp overlay with live inventory count, claim confirmations, and one-tap call to the current delivery stop",
+  "icon": "Flame",
+  "sharedLibs": [
+    "android-feedback-lib"
+  ]
+}
