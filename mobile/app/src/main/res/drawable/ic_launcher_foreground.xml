@@ -5,19 +5,24 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
 
-    <!-- flames licking up from below -->
+    <!-- flames licking up from below (kept inside the ~33dp adaptive mask radius) -->
+    <group
+        android:scaleX="1.06"
+        android:scaleY="1.06"
+        android:pivotX="54"
+        android:pivotY="56">
     <path
         android:fillColor="#FFC107"
-        android:pathData="M41,84 C37.5,79 38.5,74.5 41.5,71 C43,74 45,75.5 44.5,79 C44,82 43,83.5 41,84 Z" />
+        android:pathData="M41,83 C37.5,78.5 38.5,74.5 41.5,71 C43,74 45,75.5 44.5,78.5 C44,81 43,82.5 41,83 Z" />
     <path
         android:fillColor="#FFC107"
-        android:pathData="M67,84 C70.5,79 69.5,74.5 66.5,71 C65,74 63,75.5 63.5,79 C64,82 65,83.5 67,84 Z" />
+        android:pathData="M67,83 C70.5,78.5 69.5,74.5 66.5,71 C65,74 63,75.5 63.5,78.5 C64,81 65,82.5 67,83 Z" />
     <path
         android:fillColor="#FFD54F"
-        android:pathData="M54,88 C48.5,81.5 49.5,75.5 54,70 C58.5,75.5 59.5,81.5 54,88 Z" />
+        android:pathData="M54,85 C49.5,79.5 50.5,74.5 54,70 C57.5,74.5 58.5,79.5 54,85 Z" />
     <path
         android:fillColor="#FFF8E1"
-        android:pathData="M54,85 C51.5,81.5 52,78 54,75 C56,78 56.5,81.5 54,85 Z" />
+        android:pathData="M54,83 C52,80 52.3,77 54,74.5 C55.7,77 56,80 54,83 Z" />
 
     <!-- potato body, slightly tilted -->
     <path
@@ -57,18 +62,5 @@
     <!-- blush -->
     <path android:fillColor="#66E57373" android:pathData="M44.5,51.5m-2.2,0a2.2,2.2 0,1 1,4.4 0a2.2,2.2 0,1 1,-4.4 0" />
     <path android:fillColor="#66E57373" android:pathData="M63,50m-2.2,0a2.2,2.2 0,1 1,4.4 0a2.2,2.2 0,1 1,-4.4 0" />
-
-    <!-- steam curls above -->
-    <path
-        android:pathData="M46,26 C44,23 47,20.5 45,17"
-        android:strokeColor="#FFF3E0"
-        android:strokeWidth="2.4"
-        android:strokeLineCap="round"
-        android:fillColor="#00000000" />
-    <path
-        android:pathData="M61,25 C59,22 62,19.5 60,16"
-        android:strokeColor="#FFF3E0"
-        android:strokeWidth="2.4"
-        android:strokeLineCap="round"
-        android:fillColor="#00000000" />
+    </group>
 </vector>
