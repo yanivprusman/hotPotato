@@ -51,6 +51,7 @@ class MainActivity : ComponentActivity() {
                     LauncherScreen(
                         onStart = ::startRound,
                         onShowBubble = ::showBubble,
+                        onPractice = ::startPractice,
                     )
                 }
             }
@@ -92,12 +93,30 @@ class MainActivity : ComponentActivity() {
         if (!ensureOverlayPermission()) return
         startForegroundService(Intent(this, OverlayService::class.java))
     }
+
+    private fun startPractice() {
+        if (!ensureOverlayPermission()) return
+        lifecycleScope.launch {
+            try {
+                ApiClient.startPractice()
+                startForegroundService(Intent(this@MainActivity, OverlayService::class.java))
+                Toast.makeText(
+                    this@MainActivity,
+                    "סיבוב תרגול: 3 יחידות, שני לקוחות מדומים — אף אחד אמיתי לא מעורב",
+                    Toast.LENGTH_LONG,
+                ).show()
+            } catch (e: Exception) {
+                Toast.makeText(this@MainActivity, "שגיאה: ${e.message}", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
 }
 
 @androidx.compose.runtime.Composable
 private fun LauncherScreen(
     onStart: (item: String, emoji: String, qty: Int, price: Int) -> Unit,
     onShowBubble: () -> Unit,
+    onPractice: () -> Unit,
 ) {
     var item by remember { mutableStateOf("אבטיח") }
     var emoji by remember { mutableStateOf("🍉") }
@@ -162,6 +181,9 @@ private fun LauncherScreen(
         }
         OutlinedButton(onClick = onShowBubble, modifier = Modifier.fillMaxWidth()) {
             Text("הצג בועה (סיבוב קיים)")
+        }
+        OutlinedButton(onClick = onPractice, modifier = Modifier.fillMaxWidth()) {
+            Text("🧪 סיבוב תרגול — בלי אנשים אמיתיים")
         }
         Text(
             "האישורים הדרושים: הצגה מעל אפליקציות, שיחות, התראות.",

@@ -60,6 +60,11 @@ object ApiClient {
         Unit
     }
 
+    suspend fun startPractice() = withContext(Dispatchers.IO) {
+        request("POST", "/api/practice", JSONObject())
+        Unit
+    }
+
     suspend fun actOnClaim(id: String, action: String, qty: Int? = null, paid: Boolean? = null) {
         withContext(Dispatchers.IO) {
             val body = JSONObject().put("id", id).put("action", action)
