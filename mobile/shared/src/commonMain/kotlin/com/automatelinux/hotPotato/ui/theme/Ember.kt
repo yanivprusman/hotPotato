@@ -53,6 +53,13 @@ object Ember {
     /** The icon's ground, for full-bleed backdrops. */
     val heat = Brush.verticalGradient(listOf(Top, Mid, Deep))
 
+    /**
+     * The icon's ground exactly as the icon draws it — corner to corner, so the
+     * whole amber -> burnt-orange range lands inside a short band. A vertical
+     * `heat` stretched over a tall screen only ever shows its amber end.
+     */
+    val heatDiagonal = Brush.linearGradient(listOf(Top, Mid, Deep))
+
     /** The same heat, laid across a button or a header band. */
     val heatWide = Brush.horizontalGradient(listOf(Deep, Mid, Top))
 

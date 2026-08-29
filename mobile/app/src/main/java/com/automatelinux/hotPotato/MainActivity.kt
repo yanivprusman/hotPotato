@@ -153,34 +153,42 @@ private fun LauncherScreen(
     onPractice: () -> Unit,
 ) {
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
-        Box(
+        Column(
             Modifier
                 .fillMaxSize()
-                .background(Ember.heat),
+                .background(Ember.Deep),
         ) {
-            // the soft white bloom the icon paints behind the potato
-            Box(
-                Modifier
-                    .fillMaxWidth()
-                    .height(300.dp)
-                    .background(Ember.glow),
-            )
-            Column(Modifier.fillMaxSize()) {
-                Hero()
-                SaleSheet(onStart, onShowBubble, onPractice)
-            }
+            Hero()
+            SaleSheet(onStart, onShowBubble, onPractice)
         }
     }
 }
 
 @Composable
 private fun Hero() {
+    Box(
+        Modifier
+            .fillMaxWidth()
+            .background(Ember.heatDiagonal),
+    ) {
+        // the soft white bloom the icon paints behind the potato
+        Box(
+            Modifier
+                .matchParentSize()
+                .background(Ember.glow),
+        )
+        HeroContent()
+    }
+}
+
+@Composable
+private fun HeroContent() {
     Column(
         Modifier
             .fillMaxWidth()
             .statusBarsPadding()
             .padding(horizontal = 22.dp)
-            .padding(top = 24.dp, bottom = 20.dp),
+            .padding(top = 24.dp, bottom = 22.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         Row(
@@ -198,7 +206,7 @@ private fun Hero() {
                 )
                 Text(
                     "מכירת בזק",
-                    color = Ember.FlameLight,
+                    color = Ember.FlameCore.copy(alpha = 0.78f),
                     fontSize = 13.sp,
                     fontWeight = FontWeight.SemiBold,
                     letterSpacing = 3.sp,
